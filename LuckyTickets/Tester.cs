@@ -1,5 +1,6 @@
 ﻿using LuckyTicketsBase;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace LuckyTickets
@@ -28,9 +29,12 @@ namespace LuckyTickets
                     break;
                 }
 
+                var sw = new Stopwatch();
+                sw.Start();
                 bool result = RunTest(inFile, outFile);
+                sw.Stop();
 
-                Console.WriteLine($"Test #{nr} - " + result);
+                Console.WriteLine($"Test #{nr} - " + result + " " + sw.ElapsedMilliseconds + "ms");
                 nr++;
             }
         }
